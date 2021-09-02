@@ -57,7 +57,7 @@ namespace Diplomski.Controllers
             var manufacturer = _repository.GetManufacturerByID(id);
             if(manufacturer == null)
             {
-                return NotFound("Korisnik nije pronađen");
+                return NotFound("Proizvodjac nije pronađen");
             }
             var manufacturerDTO = _mapper.Map<ManufacturerFullReadDTO>(manufacturer);
             return Ok(manufacturerDTO);
@@ -100,7 +100,7 @@ namespace Diplomski.Controllers
 
             if(manufacturerToBeUpdated == null)
             {
-                return NotFound();
+                return NotFound("Proizvodjac nije pronadjen");
             }
 
             _mapper.Map(manufacturerUpdateDTO, manufacturerToBeUpdated);
@@ -143,7 +143,7 @@ namespace Diplomski.Controllers
 
             if(manufacturer == null)
             {
-                return NotFound();
+                return NotFound("Proizvodjac nije pronadjen");
             }
 
             var bannersFolderPath = Path.Combine(_environment.WebRootPath, _paths.ManufacturerBannerPath);
